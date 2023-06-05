@@ -19,7 +19,6 @@ module.exports = class mainDriver extends Homey.Driver {
         session.setHandler('login', async (data) => {
             try {
                 this.config = {
-                    //68376847-6af6-4b2b-92b0-d52b145cce6a
                     user_token: data.username,
                 };
 
