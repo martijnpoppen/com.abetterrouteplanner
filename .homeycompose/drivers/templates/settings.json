@@ -1,0 +1,22 @@
+{
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "en": "Login settings",
+        "nl": "Login instellingen"
+      },
+      "children": [
+        {
+          "id": "user_token",
+          "type": "text",
+          "label": {
+            "en": "ABRP Token",
+            "nl": "ABRP Token"
+          },
+          "value": ""
+        }
+      ]
+    }
+  ]
+}

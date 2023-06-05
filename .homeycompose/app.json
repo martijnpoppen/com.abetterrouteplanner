@@ -1,0 +1,71 @@
+{
+  "id": "com.abetterrouteplanner",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": ["local"],
+  "brandColor": "#a6242f",
+  "name": {
+    "en": "A Better Routeplanner (ABRP)"
+  },
+  "description": {
+    "en": "Dream, Plan, Drive!"
+  },
+  "category": ["localization"],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Martijn Poppen",
+    "email": "martijn@martijnpoppen.nl"
+  },
+  "tags": {
+    "en": [
+      "ABRP",
+      "A Better Route Planner",
+      "Planner",
+      "EV",
+      "charging",
+      "Tesla",
+      "Karma Automotive",
+      "Lucid Motors",
+      "Faraday Future",
+      "Brammo",
+      "Rivian",
+      "Lordstown Motors",
+      "Workhorse",
+      "Nikola",
+      "Canoo",
+      "Drako Motors",
+      "NIO",
+      "XPeng",
+      "Li Auto",
+      "Weltmeister",
+      "Geometry",
+      "Byton",
+      "Arcfox",
+      "Singulato",
+      "Zinoro",
+      "Chevrolet",
+      "Ford",
+      "Porsche",
+      "Mercedes-Benz",
+      "BMW",
+      "Audi",
+      "Volkswagen",
+      "Skoda",
+      "Cupra",
+      "Seat",
+      "Mini",
+      "Nissan",
+      "Honda",
+      "Toyota",
+      "Jaguar",
+      "Hyundai",
+      "Kia"
+    ]
+  }
+}

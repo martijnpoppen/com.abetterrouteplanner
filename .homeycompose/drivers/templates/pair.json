@@ -1,0 +1,26 @@
+{
+  "pair": [
+    {
+        "id": "abrp_login",
+        "options": {
+          "logo": "logo.png",
+          "title": {
+            "en": "Fill in your generic token"
+          },
+          "usernameLabel": { "en": "Token" },
+          "usernamePlaceholder": { "en": "abcd-efgh-ijklm" },
+          "passwordLabel": { "en": "Name of car" },
+          "passwordPlaceholder": { "en": "Volkswagen ID5 GTX / Tesla Model X / BMW I3" }
+        }
+      },
+      {
+        "id": "add_device"
+      },
+      {
+        "id": "done",
+        "template": "done"
+      }
+  ],
+  "platforms": ["local"],
+  "connectivity": ["cloud"]
+}

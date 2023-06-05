@@ -1,0 +1,11 @@
+{
+    "$extends": ["device", "settings", "pair"],
+    "name": {
+        "en": "ABRP Connection"
+    },
+    "class": "other",
+    "capabilities": [
+        "send_data",
+        "measure_updated_at"
+    ]
+}
