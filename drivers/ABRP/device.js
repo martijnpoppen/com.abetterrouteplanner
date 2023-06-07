@@ -43,7 +43,8 @@ module.exports = class mainDevice extends Homey.Device {
                 ...(params.odometer && {odometer: params.odometer}),
                 ...(params.est_battery_range && {est_battery_range: params.est_battery_range})
             }
-
+            this.homey.app.log(`[Device] ${this.getName()} - onCapability_Send`, tlm);
+            
             const data = await this.ABRP.send(tlm);
 
             if(data) {
