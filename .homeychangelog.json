@@ -1,5 +1,8 @@
 {
   "1.0.0": {
     "en": "Initial Release ABRP"
+  },
+  "1.0.1": {
+    "en": "NEW: set API key"
   }
 }

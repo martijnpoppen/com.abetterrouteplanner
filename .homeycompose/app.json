@@ -1,9 +1,11 @@
 {
   "id": "com.abetterrouteplanner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
-  "platforms": ["local"],
+  "platforms": [
+    "local"
+  ],
   "brandColor": "#a6242f",
   "name": {
     "en": "A Better Routeplanner (ABRP)"
@@ -11,7 +13,9 @@
   "description": {
     "en": "Dream, Plan, Drive!"
   },
-  "category": ["localization"],
+  "category": [
+    "localization"
+  ],
   "permissions": [],
   "images": {
     "small": "/assets/images/small.jpg",
