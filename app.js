@@ -1,9 +1,14 @@
 'use strict';
 
-const Homey = require('homey');
+const { OAuth2App } = require('homey-oauth2app');
+const abrpOAuth2Client = require('./lib/abrp/abrpOAuth2Client');
 const flowActions = require('./lib/flows/actions');
 
-class MyApp extends Homey.App {
+class ABRP extends OAuth2App {
+  static OAUTH2_CLIENT = abrpOAuth2Client;
+  static OAUTH2_DEBUG = true;
+  static OAUTH2_MULTI_SESSION = true;
+
     log() {
         console.log.bind(this, "[log]").apply(this, arguments);
       }
@@ -14,11 +19,11 @@ class MyApp extends Homey.App {
 	
 	// -------------------- INIT ----------------------
 
-    async onInit() {
+    async onOAuth2Init() {
         this.log(`${this.homey.manifest.id} - ${this.homey.manifest.version} started...`);
 
         await flowActions.init(this.homey);
     }
 }
 
-module.exports = MyApp;
+module.exports = ABRP;

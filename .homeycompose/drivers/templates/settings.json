@@ -3,16 +3,14 @@
     {
       "type": "group",
       "label": {
-        "en": "Login settings",
-        "nl": "Login instellingen"
+        "en": "Login settings"
       },
       "children": [
         {
-          "id": "user_token",
-          "type": "text",
+          "id": "vehicle_typecode",
+          "type": "label",
           "label": {
-            "en": "ABRP Token",
-            "nl": "ABRP Token"
+            "en": "Vehicle type code"
           },
           "value": ""
         }

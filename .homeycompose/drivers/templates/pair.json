@@ -1,26 +1,36 @@
 {
   "pair": [
     {
-        "id": "abrp_login",
-        "options": {
-          "logo": "logo.png",
-          "title": {
-            "en": "Fill in your generic token"
-          },
-          "usernameLabel": { "en": "Token" },
-          "usernamePlaceholder": { "en": "abcd-efgh-ijklm" },
-          "passwordLabel": { "en": "Name of car" },
-          "passwordPlaceholder": { "en": "Volkswagen ID5 GTX / Tesla Model X / BMW I3" }
-        }
+      "id": "login_oauth2",
+      "template": "login_oauth2"
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
       },
-      {
-        "id": "add_device"
-      },
-      {
-        "id": "done",
-        "template": "done"
+      "options": {
+        "singular": true
       }
+    },
+    {
+        "id": "loading",
+        "template": "loading"
+      },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
   ],
+
+  "repair": [
+    {
+      "id": "login_oauth2",
+      "template": "login_oauth2"
+    }
+  ],
+
   "platforms": ["local"],
   "connectivity": ["cloud"]
 }

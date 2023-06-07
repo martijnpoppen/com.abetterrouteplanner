@@ -1,54 +1,25 @@
 const Homey = require('homey');
-const ABRP = require('../../lib/abrp');
+const { OAuth2Driver } = require('homey-oauth2app');
 
-module.exports = class mainDriver extends Homey.Driver {
-    onInit() {
+module.exports = class mainDriver extends OAuth2Driver {
+    async onOAuth2Init() {
         this.homey.app.log('[Driver] - init', this.id);
         this.homey.app.log(`[Driver] - version`, Homey.manifest.version);
     }
 
-    GetGUID() {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = (Math.random() * 16) | 0,
-                v = c == 'x' ? r : (r & 0x3) | 0x8;
-            return v.toString(16);
-        });
-    }
+    async onPairListDevices({ oAuth2Client }) {
+        const device = await oAuth2Client.getDevices();
 
-    async onPair(session) {
-        session.setHandler('login', async (data) => {
-            try {
-                this.config = {
-                    user_token: data.username,
-                };
-
-                this.deviceName = data.password,
-
-                this.homey.app.log(`[Driver] ${this.id} - got config`, { ...this.config });
-
-                this.ABRP = new ABRP({...this.config, api_key: Homey.env.API_KEY});
-
-                return true;
-            } catch (error) {
-                console.log(error);
-                throw new Error(this.homey.__('pair.error'));
+        return [
+            {
+                name: device.vehicle_name,
+                data: {
+                    id: device.vehicle_id
+                },
+                settings: {
+                    vehicle_typecode: device.vehicle_typecode
+                }
             }
-        });
-
-        session.setHandler('add_device', async () => {
-            try {
-                return {
-                    name: `ABRP - ${this.deviceName}`,
-                    data: {
-                        id: this.GetGUID()
-                    },
-                    settings: {
-                        ...this.config
-                    }
-                };
-            } catch (error) {
-                return Promise.reject(error);
-            }
-        });
+        ];
     }
 };

@@ -1,14 +1,15 @@
 const Homey = require('homey');
-const ABRP = require('../../lib/abrp');
+const { OAuth2Device } = require('homey-oauth2app');
 const { sleep, getCurrentDatetime } = require('../../lib/helpers');
+const ABRP = require('../../lib/abrp');
 
-module.exports = class mainDevice extends Homey.Device {
-    async onInit() {
+module.exports = class mainDevice extends OAuth2Device {
+    async onOAuth2Init() {
         try {
             this.homey.app.log('[Device] - init =>', this.getName());
 
             await this.checkCapabilities();
-            await this.setABRPClient(this.getSettings());
+            await this.setABRPClient();
 
             await this.setAvailable();
         } catch (error) {
@@ -16,43 +17,34 @@ module.exports = class mainDevice extends Homey.Device {
         }
     }
 
-    // ------------- Settings -------------
-    async onSettings({ oldSettings, newSettings, changedKeys }) {
-        this.homey.app.log(`[Device] ${this.getName()} - oldSettings`, { ...oldSettings });
-        this.homey.app.log(`[Device] ${this.getName()} - newSettings`, { ...newSettings });
-
-        if (changedKeys.length) {
-            await this.setABRPClient(newSettings);
-        }
-    }
-
-    async setABRPClient(config) {
-        this.ABRP = new ABRP({ ...config, api_key: Homey.env.API_KEY });
+    async setABRPClient() {
+        this.ABRP = new ABRP({ token: this.oAuth2Client.getToken().access_token, api_key: Homey.env.CLIENT_SECRET });
     }
 
     async onCapability_Send(params) {
         try {
             const tlm = {
-                ...(params.soc && {soc: params.soc}),
-                ...(params.power && {power: params.power}),
-                ...(params.speed && {speed: params.speed}),
-                ...(params.lat && {lat: params.lat}),
-                ...(params.lon && {lon: params.lon}),
-                ...(params.is_charging && {is_charging: params.is_charging}),
-                ...(params.is_parked && {is_parked: params.is_parked}),
-                ...(params.odometer && {odometer: params.odometer}),
-                ...(params.est_battery_range && {est_battery_range: params.est_battery_range})
-            }
+                ...(params.hasOwnProperty('soc') && { soc: params.soc }),
+                ...(params.hasOwnProperty('power') && { power: params.power }),
+                ...(params.hasOwnProperty('speed') && { speed: params.speed }),
+                ...(params.hasOwnProperty('lat') && { lat: params.lat }),
+                ...(params.hasOwnProperty('lon') && { lon: params.lon }),
+                ...(params.hasOwnProperty('is_charging') && { is_charging: params.is_charging }),
+                ...(params.hasOwnProperty('is_parked') && { is_parked: params.is_parked }),
+                ...(params.hasOwnProperty('odometer') && { odometer: params.odometer }),
+                ...(params.hasOwnProperty('est_battery_range') && { est_battery_range: params.est_battery_range })
+            };
+
             this.homey.app.log(`[Device] ${this.getName()} - onCapability_Send`, tlm);
-            
-            const data = await this.ABRP.send(tlm);
 
-            if(data) {
+            const data = await this.ABRP.sendTlm(tlm);
+
+            if (data) {
                 this.setCapabilityValue('measure_updated_at', getCurrentDatetime());
-                return true
+                return true;
             }
 
-            return false
+            return false;
         } catch (error) {
             this.homey.app.log(error.message);
 
