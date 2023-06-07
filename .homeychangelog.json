@@ -13,5 +13,8 @@
   },
   "1.0.4": {
     "en": "APP Release"
+  },
+  "1.1.0": {
+    "en": "NEW: set Oauth2 login"
   }
 }
