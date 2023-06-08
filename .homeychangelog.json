@@ -19,5 +19,8 @@
   },
   "1.1.1": {
     "en": "FIX: prevent redirect in Oauth2"
+  },
+  "1.1.2": {
+    "en": "FIX: contributors app page"
   }
 }

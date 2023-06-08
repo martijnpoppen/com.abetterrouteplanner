@@ -1,6 +1,6 @@
 {
   "id": "com.abetterrouteplanner",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "platforms": [
@@ -74,18 +74,12 @@
     "developers": [
       {
         "name": "Martijn Poppen",
-        "email": "controlmyspa@martijnpoppen.nl"
-      },
-      {
-        "name": "Tapio Heiskanen"
+        "email": "abrp@martijnpoppen.nl"
       }
     ],
     "translators": [
       {
         "name": "🇬🇧 Martijn Poppen"
-      },
-      {
-        "name": "🇳🇱 Martijn Poppen"
       }
     ]
   },
