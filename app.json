@@ -304,13 +304,25 @@
       "class": "other",
       "capabilities": [
         "send_data",
-        "measure_updated_at"
+        "updated_at"
       ],
       "id": "ABRP"
     }
   ],
   "capabilities": {
-    "measure_updated_at": {
+    "send_data": {
+      "platforms": [
+        "local"
+      ],
+      "type": "boolean",
+      "title": {
+        "en": "Send data"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": null
+    },
+    "updated_at": {
       "platforms": [
         "local"
       ],
@@ -323,18 +335,6 @@
       "setable": true,
       "uiComponent": "sensor",
       "icon": "assets/icons/updated.svg"
-    },
-    "send_data": {
-      "platforms": [
-        "local"
-      ],
-      "type": "boolean",
-      "title": {
-        "en": "Send data"
-      },
-      "getable": true,
-      "setable": true,
-      "uiComponent": null
     }
   }
 }

@@ -6,6 +6,6 @@
     "class": "other",
     "capabilities": [
         "send_data",
-        "measure_updated_at"
+        "updated_at"
     ]
 }

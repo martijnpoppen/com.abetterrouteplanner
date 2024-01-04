@@ -40,7 +40,7 @@ module.exports = class mainDevice extends OAuth2Device {
             const data = await this.ABRP.sendTlm(tlm);
 
             if (data) {
-                this.setCapabilityValue('measure_updated_at', getCurrentDatetime());
+                this.setCapabilityValue('updated_at', getCurrentDatetime());
                 return true;
             }
 
@@ -55,29 +55,34 @@ module.exports = class mainDevice extends OAuth2Device {
     // ------------- Capabilities -------------
     async checkCapabilities() {
         const driverManifest = this.driver.manifest;
-        const driverCapabilities = driverManifest.capabilities;
-
+        let driverCapabilities = driverManifest.capabilities;
         const deviceCapabilities = this.getCapabilities();
 
+        this.homey.app.log(`[Device] ${this.getName()} - checkCapabilities for`, driverManifest.id);
         this.homey.app.log(`[Device] ${this.getName()} - Found capabilities =>`, deviceCapabilities);
-        this.homey.app.log(`[Device] ${this.getName()} - Driver capabilities =>`, driverCapabilities);
 
-        if (deviceCapabilities.length !== driverCapabilities.length) {
-            await this.updateCapabilities(driverCapabilities, deviceCapabilities);
-        }
 
-        return deviceCapabilities;
+        await this.updateCapabilities(driverCapabilities, deviceCapabilities);
+
+        return;
     }
 
     async updateCapabilities(driverCapabilities, deviceCapabilities) {
-        this.homey.app.log(`[Device] ${this.getName()} - Add new capabilities =>`, driverCapabilities);
         try {
-            deviceCapabilities.forEach((c) => {
-                this.removeCapability(c);
+            const newC = driverCapabilities.filter((d) => !deviceCapabilities.includes(d));
+            const oldC = deviceCapabilities.filter((d) => !driverCapabilities.includes(d));
+
+            this.homey.app.log(`[Device] ${this.getName()} - Got old capabilities =>`, oldC);
+            this.homey.app.log(`[Device] ${this.getName()} - Got new capabilities =>`, newC);
+
+            oldC.forEach((c) => {
+                this.homey.app.log(`[Device] ${this.getName()} - updateCapabilities => Remove `, c);
+                this.removeCapability(c).catch(e => this.homey.app.log(e));
             });
             await sleep(2000);
-            driverCapabilities.forEach((c) => {
-                this.addCapability(c);
+            newC.forEach((c) => {
+                this.homey.app.log(`[Device] ${this.getName()} - updateCapabilities => Add `, c);
+                this.addCapability(c).catch(e => this.homey.app.log(e));
             });
             await sleep(2000);
         } catch (error) {
