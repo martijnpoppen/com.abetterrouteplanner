@@ -22,5 +22,8 @@
   },
   "1.1.2": {
     "en": "FIX: contributors app page"
+  },
+  "1.1.3": {
+    "en": "FIX: lastUpdate card has wrong type, causing issues in Homey-core"
   }
 }
