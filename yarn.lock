@@ -64,10 +64,10 @@ form-data@^4.0.0:
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
 
-homey-oauth2app@^3.5.3:
-  version "3.5.3"
-  resolved "https://registry.yarnpkg.com/homey-oauth2app/-/homey-oauth2app-3.5.3.tgz#066dde3fc1e821f67f052a4fdd1a368753fdf190"
-  integrity sha512-oSAX3u2VnyFH4owxfX54gdIOJ4/IILwg/SaoI+9d6TRdayzICJpQxt5wfVaLrw/kALkTvSXTHBWtbrzUCewsKQ==
+homey-oauth2app@^3.7.2:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/homey-oauth2app/-/homey-oauth2app-3.7.2.tgz#db808354207388fb6abddb4e5b542e669202efb3"
+  integrity sha512-YznxcrHg2xqzPkggLkjCOiEKHETPCkCWFQHGuXDD/JltFebPA2QcNmoiWKacZqd7V6Fh7BLbJJGrVkuMXGstig==
   dependencies:
     node-fetch "^2.3.0"
 

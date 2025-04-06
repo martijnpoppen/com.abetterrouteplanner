@@ -3,14 +3,9 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {},
-  "devDependencies": {
-    "@tsconfig/node16": "^1.0.4",
-    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.4",
-    "@types/node": "^20.2.5"
-  },
   "dependencies": {
     "axios": "^1.4.0",
-    "homey-oauth2app": "^3.5.3",
+    "homey-oauth2app": "^3.7.2",
     "https": "^1.0.0"
   }
 }

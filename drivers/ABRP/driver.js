@@ -8,18 +8,27 @@ module.exports = class mainDriver extends OAuth2Driver {
     }
 
     async onPairListDevices({ oAuth2Client }) {
-        const device = await oAuth2Client.getDevices();
+        try {
+            const device = await oAuth2Client.getDevices();
 
-        return [
-            {
-                name: device.vehicle_name,
-                data: {
-                    id: device.vehicle_id
-                },
-                settings: {
-                    vehicle_typecode: device.vehicle_typecode
+            return [
+                {
+                    name: device.vehicle_name,
+                    data: {
+                        id: device.vehicle_id
+                    },
+                    settings: {
+                        vehicle_typecode: device.vehicle_typecode
+                    }
                 }
-            }
-        ];
+            ];
+        } catch (error) {
+            this.homey.app.log('[Driver] - Error in onPairListDevices:', error);
+            throw new Error('Failed to retrieve devices');
+            
+        }
+        
+
+
     }
 };

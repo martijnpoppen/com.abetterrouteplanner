@@ -25,5 +25,8 @@
   },
   "1.1.3": {
     "en": "FIX: lastUpdate card has wrong type, causing issues in Homey-core"
+  },
+  "1.2.0": {
+    "en": "NEW: update Oauth for ABRP 5.0"
   }
 }
