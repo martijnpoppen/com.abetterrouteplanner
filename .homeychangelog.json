@@ -28,5 +28,8 @@
   },
   "1.2.0": {
     "en": "NEW: update Oauth for ABRP 5.0"
+  },
+  "1.3.0": {
+    "en": "NEW: update abrp oauth"
   }
 }
