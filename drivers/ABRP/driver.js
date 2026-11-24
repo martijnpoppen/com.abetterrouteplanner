@@ -10,7 +10,7 @@ module.exports = class mainDriver extends OAuth2Driver {
     async onPairListDevices({ oAuth2Client }) {
         try {
             const device = await oAuth2Client.getDevices();
-
+console.log('Retrieved device:', device);
             return [
                 {
                     name: device.vehicle_name,
