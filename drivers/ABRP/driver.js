@@ -24,7 +24,7 @@ module.exports = class mainDriver extends OAuth2Driver {
             ];
         } catch (error) {
             this.homey.app.log('[Driver] - Error in onPairListDevices:', error);
-            throw new Error('Failed to retrieve devices');
+            throw new Error(`Failed to retrieve devices: ${error.message || error}`);
             
         }
         
